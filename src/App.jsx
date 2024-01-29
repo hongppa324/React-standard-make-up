@@ -1,43 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 
-function App() {
-  const students = [
-    { name: "Alice", age: 17, grade: "A" },
-    { name: "Bob", age: 18, grade: "B" },
-    { name: "Charlie", age: 16, grade: "C" },
-    { name: "Diana", age: 19, grade: "D" },
-    { name: "Elmo", age: 20, grade: "E" },
-    { name: "Fiona", age: 21, grade: "F" },
-    { name: "Gabe", age: 22, grade: "A" },
-    { name: "Hannah", age: 23, grade: "B" },
-    { name: "Irene", age: 24, grade: "C" },
-    { name: "Jenny", age: 25, grade: "D" },
-    { name: "Kevin", age: 26, grade: "E" },
-    { name: "Linda", age: 27, grade: "F" },
-  ];
-
-  const [minAge, setMinAge] = useState(18);
-
-  const filteredStudents = students.filter((student) => student.age >= minAge);
-
-  const studentList = filteredStudents.map((student, index) => (
-    <li key={index}>
-      {student.name} - Age: {student.age}, Grade: {student.grade}
-    </li>
-  ));
-
-  const ageListHandler = (event) => {
-    setMinAge(event.target.value);
-  };
-
+// TODO: StudentList 컴포넌트를 작성하세요. props로 학생 목록을 받아와서 표시해야 합니다.
+function StudentList(
+  /* 필요한 props를 여기에 전달하세요 */ { filteredStudents }
+) {
   return (
-    <div>
-      <h1>학생 목록</h1>
-      다음 나이 이상의 학생목록만 출력해요 :{" "}
-      <input type="number" value={minAge} onChange={ageListHandler} /> 살 이상
-      <ul>{studentList}</ul>
-    </div>
+    <ul>
+      {filteredStudents.map((student, index) => (
+        <li key={index}>
+          {student.name} ({student.age})세 - {student.grade}등급
+        </li>
+      ))}
+      {/* 여기에 학생 목록을 표시하는 로직을 작성하세요. */}
+      {/* ex: 홍길동 (20세) - A등급 */}
+    </ul>
   );
 }
 
-export default App;
+export default StudentList;
