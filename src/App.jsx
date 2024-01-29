@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
-// TODO: StudentList 컴포넌트를 작성하세요. props로 학생 목록을 받아와서 표시해야 합니다.
-function StudentList(
-  /* 필요한 props를 여기에 전달하세요 */ { filteredStudents }
-) {
+function App() {
+  const students = [
+    { name: "Alice", age: 17, grade: "A" },
+    { name: "Bob", age: 18, grade: "B" },
+    { name: "Charlie", age: 16, grade: "C" },
+    { name: "Diana", age: 19, grade: "D" },
+    { name: "Elmo", age: 20, grade: "E" },
+    { name: "Fiona", age: 21, grade: "F" },
+    { name: "Gabe", age: 22, grade: "A" },
+    { name: "Hannah", age: 23, grade: "B" },
+    { name: "Irene", age: 24, grade: "C" },
+    { name: "Jenny", age: 25, grade: "D" },
+    { name: "Kevin", age: 26, grade: "E" },
+    { name: "Linda", age: 27, grade: "F" },
+  ];
+
+  const [minAge, setMinAge] = useState(18);
+
+  // TODO: filter를 사용하여 minAge 이상의 학생들만 선택하세요.
+  const filteredStudents = students.filter((student) => student.age >= minAge);
+
+  // TODO: map을 사용하여 필터링된 학생들의 정보를 표시하세요.
+  const studentList = filteredStudents.map((student, index) => (
+    <li key={index}>
+      {student.name} - Age: {student.age}, Grade: {student.grade}
+    </li>
+  ));
+
   return (
     <ul>
       {filteredStudents.map((student, index) => (
@@ -11,10 +35,8 @@ function StudentList(
           {student.name} ({student.age})세 - {student.grade}등급
         </li>
       ))}
-      {/* 여기에 학생 목록을 표시하는 로직을 작성하세요. */}
-      {/* ex: 홍길동 (20세) - A등급 */}
     </ul>
   );
 }
 
-export default StudentList;
+export default App;
